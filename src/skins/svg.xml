@@ -1,0 +1,112 @@
+<!-- Embeded skin for AccuWeather plugin for >=1080p resolution  -->
+<skin>
+  <screen name="AccuWeather" position="fill" flags="wfNoBorder">
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/accuweather-logo.svg" position="1087*f,10*f" size="173*f,36*f" alphatest="on" zPosition="2"  transparent="1" scale="on" />
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,44*f" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,718*f" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="2*f,720*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="1278*f,0" size="2*f,720*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="691*f,46*f" size="2*f,1008"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="691*f,567*f" size="1008,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#252525" position="2*f,2*f" size="1275*f,40*f"  zPosition="-1"/>
+    <widget name="city" position="700*f,56*f" size="573*f,30*f" font="Regular;26*f" foregroundColor="#FFF554" transparent="1" halign="center"  zPosition="0"/>
+    <widget name="period" position="14*f,10*f" size="666*f,36" font="Regular;24*f" foregroundColor="#FFF554" transparent="1" halign="center"  zPosition="0"/>
+    <widget source="forecast" render="Listbox" position="14*f,62*f" size="666*f,636*f" scrollbarMode="showOnDemand" scrollbarWidth="4*f" transparent="0"  zPosition="2" backgroundColor="#111111" backgroundColorSelected="#121212" foregroundColor="#F5aaa4" foregroundColorSelected="#aa2265">
+      <convert type="TemplatedMultiContent">
+          {"template": [
+            MultiContentEntryText(pos=(6*f, 4*f), size=(66*f, 24*f), font=0, flags=RT_HALIGN_CENTER, text=0,  color="#4d94ff", color_sel="#FFF554"),
+            MultiContentEntryText(pos=(6*f, 26*f), size=(66*f, 24*f), font=1, flags=RT_HALIGN_CENTER, text=1,  color="#58D68D", color_sel="#FFF554"),
+		    MultiContentEntryPixmapAlphaTest(pos = (80*f, 4*f), size = (46*f, 46*f), png = 2, flags=BT_SCALE), 
+            MultiContentEntryText(pos=(133*f, 6*f), size=(46*f, 26*f), font=0, flags=RT_HALIGN_RIGHT, text=3), 
+            MultiContentEntryText(pos=(173*f, 20*f), size=(34*f, 26*f), font=1, flags=RT_HALIGN_LEFT, text=4),
+            MultiContentEntryText(pos=(214*f, 14*f), size=(366*f, 26*f), font=0, flags=RT_HALIGN_LEFT, text=5),
+            MultiContentEntryText(pos=(613*f, 16*f), size=(46*f, 20*f), font=1, flags=RT_HALIGN_RIGHT, text=6,  color="#33ccff", color_sel="#FFF554"),
+		    MultiContentEntryPixmapAlphaTest(pos = (593*f, 16*f), size = (20*f, 20*f), png = 7, flags=BT_SCALE), 
+            ],
+            "fonts": [gFont("Regular", 20*f), gFont("Regular", 16*f)],
+            "itemHeight": 53*f
+          }
+        </convert>
+    </widget> 
+    <widget name="head" position="713*f,107*f" size="364*f,26*f" font="Regular;22*f" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <widget name="cur_icon" position="713*f,133*f" size="66*f,66*f" alphatest="blend" zPosition="2" />
+    <widget name="temp" position="800*f,147*f" size="105*f,54*f" font="Regular;40*f" foregroundColor="#FFF554" transparent="1" halign="center"  zPosition="1"/>
+    <widget name="extra" position="915*f,160*f" size="345*f,26*f" font="Regular;18*f" foregroundColor="##e2F554" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <widget name="phrase" position="720*f,206*f" size="400*f,26*f" font="Regular;20*f" foregroundColor="#D2B4DE " transparent="1" halign="left"  zPosition="1"/>
+    <widget name="detail-left" position="710*f,246*f" size="266*f,133*f" font="Regular;18*f" foregroundColor="#5499C7" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <widget name="detail-right" position="995*f,246*f" size="266*f,133*f" font="Regular;18*f" foregroundColor="#3498DB" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/weathericons/sun.svg" position="743*f,373*f" size="46*f,46*f" alphatest="blend" zPosition="2" transparent="1" scale="on"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/weathericons/moon.svg" position="1008*f,373*f" size="46*f,46*f" alphatest="blend" zPosition="2" transparent="1" scale="on"/>
+    <widget name="sun_dur" position="880*f,376*f" size="66*f,40*f" font="Regular;18*f" foregroundColor="#E67E22" transparent="1" halign="right"  zPosition="1"/>
+    <widget name="moon_dur" position="1146*f,376*f" size="66*f,40*f" font="Regular;18*f" foregroundColor="#FFF554" transparent="1" halign="right"  zPosition="1"/>
+    <widget name="sunrise" position="736*f,437*f" size="233*f,160*f" font="Regular;18*f" foregroundColor="#58D68D" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <widget name="moonrise" position="1000*f,437*f" size="233*f,160*f" font="Regular;18*f" foregroundColor="#58D68D" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_red.svg" position="1240*f,584*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_green.svg" position="1240*f,616*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_yellow.svg" position="1240*f,648*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_blue.svg" position="1240*f,680*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on" /> 
+    <widget name="key_red" position="1086*f,583*f" size="133*f,26*f"  font="Regular;18*f"  halign="right" transparent="1" valign="center" zPosition="2" />
+    <widget name="key_green" position="1086*f,615*f" size="133*f,26*f"  font="Regular;18*f"  halign="right" transparent="1" valign="center" zPosition="2" />
+    <widget name="key_blue" position="1020*f,679*f" size="200*f,26*f" font="Regular;18*f" halign="right" transparent="1" valign="center" zPosition="2" />
+  </screen>
+  
+  <screen name="AccuWeatherHours" position="fill" flags="wfNoBorder">
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/accuweather-logo.svg" position="1087*f,10*f" size="173*f,36*f" alphatest="on" zPosition="2"  transparent="1" scale="on" />
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,44*f" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,718*f" size="1280*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="2*f,720*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="1278*f,0" size="2*f,720*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="691*f,46*f" size="2*f,1008"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="691*f,567*f" size="1008,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#252525" position="2*f,2*f" size="1275*f,40*f"  zPosition="-1"/>
+    <widget name="city" position="440,15" size="400,45" font="Regular;39" foregroundColor="#FFF554" transparent="1" halign="right"  zPosition="0"/>
+    <widget name="period" position="20,15" size="605,36" font="Regular;36" foregroundColor="#FFF554" transparent="1" halign="left"  zPosition="0"/>
+    <widget source="forecast" render="Listbox" position="20,93" size="1000,960" scrollbarMode="showOnDemand" scrollbarWidth="4*f" transparent="0"  zPosition="2" backgroundColor="#00111111" backgroundColorSelected="#11442265" foregroundColor="#11F5aaa4" foregroundColorSelected="#55aa2265">
+      <convert type="TemplatedMultiContent">
+      
+
+          {"template": [
+            MultiContentEntryText(pos=(6*f, 14*f), size=(66*f, 24*f), font=0, flags=RT_HALIGN_CENTER, text=0,  color="#4d94ff", color_sel="#FFF554"),
+		    MultiContentEntryPixmapAlphaTest(pos = (80*f, 4*f), size = (46*f, 46*f), png = 1, flags=BT_SCALE), 
+            MultiContentEntryText(pos=(133*f, 14*f), size=(46*f, 26*f), font=0, flags=RT_HALIGN_RIGHT, text=2),
+            MultiContentEntryText(pos=(214*f, 14*f), size=(366*f, 26*f), font=0, flags=RT_HALIGN_LEFT, text=3),
+            MultiContentEntryText(pos=(610*f, 16*f), size=(46*f, 20*f), font=0, flags=RT_HALIGN_RIGHT, text=4,  color="#33ccff", color_sel="#FFF554"),
+		    MultiContentEntryPixmapAlphaTest(pos = (593*f, 16*f), size = (20*f, 20*f), png = 5, flags=BT_SCALE), 
+            ],
+            "fonts": [gFont("Regular", 20*f)],
+            "itemHeight": 53*f
+          }
+        </convert>
+    </widget>
+    <widget name="detail-left" position="710*f,246*f" size="266*f,133*f" font="Regular;18*f" foregroundColor="#5499C7" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+    <widget name="detail-right" position="995*f,246*f" size="266*f,133*f" font="Regular;18*f" foregroundColor="#3498DB" transparent="1" zPosition="2" split="1" dividechar=":" colposition="0"/>
+  </screen>
+  
+    <screen name="AccuWeatherSearch"  position="center,center" size="640*f,400*f" flags="wfNoBorder">
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="640*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="0,0" size="2*f,400*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="2*f,398*f" size="636*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="638*f,2*f" size="2*f,396*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="2*f,344*f" size="636*f,2*f"  zPosition="-1"/>
+    <eLabel backgroundColor="#E74C3C" position="2*f,44*f" size="636*f,2*f"  zPosition="-1"/>
+    
+    <widget name="description" position="10*f,10*f" size="620*f,24*f" font="Regular;24*f" halign="center" transparent="1"/>
+    <widget source="citylist" render="Listbox" position="20*f,70*f" size="600*f,252*f"  scrollbarMode="showOnDemand" scrollbarWidth="4*f" transparent="1">
+        <convert type="TemplatedMultiContent">
+          {"template": [
+            MultiContentEntryText(pos=(10*f, 6*f), size=(480*f, 30*f), font=0, flags=RT_HALIGN_LEFT, text=0),
+            MultiContentEntryText(pos=(490*f, 6*f), size=(100*f, 30*f), font=0, flags=RT_HALIGN_RIGHT, text=1),
+            ],
+            "fonts": [gFont("Regular", 20*f)],
+            "itemHeight": 36*f
+          }
+        </convert>
+    </widget>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_red.svg" position="30*f,360*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/AccuWeather/images/key_blue.svg" position="430*f,360*f" size="24*f,24*f" transparent="1" alphatest="on"  zPosition="3" scale="on" /> 
+    <widget name="key_red" position="70*f,360*f" size="240*f,26*f"  font="Regular;18*f"  halign="left" transparent="1" valign="center" zPosition="2" />
+    <widget name="key_blue" position="470*f,360*f" size="240*f,26*f" font="Regular;18*f" halign="left" transparent="1" valign="center" zPosition="2" />
+  </screen>
+</skin>
