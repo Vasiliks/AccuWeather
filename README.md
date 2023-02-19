@@ -1,0 +1,2 @@
+# AccuWeather
+ AccuWeather Forecast Plugin
