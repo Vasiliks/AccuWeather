@@ -92,7 +92,7 @@
     <eLabel backgroundColor="#E74C3C" position="638*f,2*f" size="2*f,396*f"  zPosition="-1"/>
     <eLabel backgroundColor="#E74C3C" position="2*f,344*f" size="636*f,2*f"  zPosition="-1"/>
     <eLabel backgroundColor="#E74C3C" position="2*f,44*f" size="636*f,2*f"  zPosition="-1"/>
-    <widget name="description" position="10*f,10*f" size="620*f,24*f" font="Regular;24*f" halign="center" transparent="1"/>
+    <widget name="description" position="10*f,10*f" size="620*f,28*f" font="Regular;24*f" halign="center" transparent="1"/>
     <widget source="citylist" render="Listbox" position="20*f,70*f" size="600*f,252*f"  scrollbarMode="showOnDemand" scrollbarWidth="4*f" transparent="1">
         <convert type="TemplatedMultiContent">
           {"template": [
