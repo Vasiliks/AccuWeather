@@ -26,7 +26,7 @@ URL = 'https://www.accuweather.com'
 lang = language.getLanguage()[:2]
 city_list = '/etc/enigma2/accuweather_city.list'
 precip_svg = LoadPixmap(cached=True, path="{}{}".format(FullPath, "/images/weathericons/humidity.svg"))
-plugin_version = '1.1'
+plugin_version = '1.2'
 
 
 accuweathercfg = config.plugins.accuweather = ConfigSubsection()
@@ -100,10 +100,10 @@ class AccuWeather(Screen):
         self["key_green"] = Label(_("Hourly"))
         self["key_blue"] = Label(_("Select City"))
         self["period"] = Label(" ")
-        self["color_period"] = Label("                 ")
+        self["color_period"] = Label("")
         self["city"] = Label(" ")
         self["head"] = ScrollLabel("")
-        self["extra"] = ScrollLabel("")
+        self["extra"] = Label("")
         self["detail-left"] = ScrollLabel("")
         self["detail-right"] = ScrollLabel("")
         self["sunrise"] = ScrollLabel("")
@@ -139,7 +139,7 @@ class AccuWeather(Screen):
     def Daily_Weather_Forecast(self):
         bs = full_link("daily-weather-forecast")
         self.forecast = []
-        self['city'].setText(STR(bs.find('h1', class_='header-loc').text))
+        self['city'].setText(STR(bs.title.string.split("|")[0].strip()))
         self['period'].setText(STR(bs.find('p', class_='module-title').text))
         daily_weather_forecast = bs.find('div', class_='page-column-1')
         page_content = daily_weather_forecast.find_all('div', class_='daily-wrapper')
@@ -160,6 +160,8 @@ class AccuWeather(Screen):
         show_svg("{}{}".format(FullPath, resp[1]), self["cur_icon"])
         self["temp"].setText(resp[2])
         self["phrase"].setText(resp[3])
+        j = resp[4].split('\t')
+        self["extra"].setText("{}\n{}".format(j[0].strip(), j[-1].strip()))
         R, L = get_RL(resp[5])
         self["detail-left"].setText(L)
         self["detail-right"].setText(R)
@@ -210,7 +212,7 @@ class AccuWeather(Screen):
         self.close()
 
     def about(self):
-        self.session.open(MessageBox, _('Enigma2 AccuWeather Forecast ©2023 Vasiliks'),
+        self.session.open(MessageBox, _('AccuWeather Forecast\nEnigma2 plugin ver. %s\n©2023 Vasiliks') % plugin_version,
                           MessageBox.TYPE_INFO, simple=True)
 
     def select_city(self):
@@ -224,13 +226,11 @@ class AccuWeatherHours(Screen):
     def __init__(self, session, day):
         Screen.__init__(self, session)
         self.skin = getSkin("AccuWeatherHours")
-        self.setTitle(_("Enigma2 AccuWeather  ver. %s") % plugin_version)
         self.day = day
         self["key_red"] = Label(_("Exit"))
-        self["period"] = Label()
         self["date"] = Label()
         self["date"].setText(day[1] + "   " + day[2])
-        self["detail"] = ScrollLabel("")
+        self["detail"] = ScrollLabel()
         self.forecast = []
         self["forecast"] = List(self.forecast, enableWrapAround=True)
         self['actions'] = ActionMap(["AccuWeatherActions"], {
@@ -247,7 +247,7 @@ class AccuWeatherHours(Screen):
         self.forecast = []
         bs = full_link("hourly-weather-forecast", self.day[0])
         hourly = bs.find(attrs={"data-qa": "hourly"})
-        self['period'].setText(STR(hourly.text.strip()))
+        self.setTitle(STR(bs.title.string.split("|")[0]))
         hour_weather = []
         hour_forecast = bs.find('div', class_='page-column-1')
         currents = hour_forecast.find_all('div', 'accordion-item hourly-card-nfl hour')
