@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AccuWeather\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-01-20 21:08+0100\n"
+"PO-Revision-Date: 2023-02-20 18:10+0100\n"
 "Last-Translator: Vasiliks\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -21,6 +21,9 @@ msgstr "Почасовой"
 
 msgid "Enter the name of the locality"
 msgstr "Введите название населенного пункта"
+
+msgid "Exit"
+msgstr "Выход"
 
 msgid "Result Search for \" %s \""
 msgstr "Результаты поиска для  \" %s \""
