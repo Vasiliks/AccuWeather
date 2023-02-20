@@ -330,7 +330,7 @@ class AccuWeatherSelect(Screen):
         self["citylist"].setList(self.citylist)
 
     def openVirtualKeyBoard(self):
-        self.session.openWithCallback(self.search, VirtualKeyBoard, title=_('Enter text to search city'))
+        self.session.openWithCallback(self.search, VirtualKeyBoard, title=_('Enter the name of the locality'))
 
     def ok(self):
         nc = '{}, {}'.format(self["citylist"].getCurrent()[0], self["citylist"].getCurrent()[1])
