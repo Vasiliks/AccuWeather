@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+# created by Vasiliks 01.2023
+
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-from enigma import getDesktop
-from gettext import bindtextdomain, dgettext, gettext
+from gettext import bindtextdomain, dgettext
 from os import environ, path
 
 try:
@@ -17,14 +18,10 @@ def localeInit():
 
 
 def _(txt):
-    t = dgettext(PluginLanguageDomain, txt)
-    if t == txt:
-        t = gettext(txt)
-    return t
+    return (dgettext(PluginLanguageDomain, txt), '')[txt == '']
 
 
 PluginLanguageDomain = "AccuWeather"
-
 getFullPath = lambda fname: resolveFilename(SCOPE_PLUGINS, path.join('Extensions', PluginLanguageDomain, fname))
 AccuWeather_skin = ETree.parse(getFullPath('skins/svg.xml')).getroot()
 getSkin = lambda skinName: ETree.tostring(AccuWeather_skin.find('.//screen[@name="%s"]' % skinName), encoding='utf8', method='xml')
