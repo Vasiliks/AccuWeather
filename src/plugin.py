@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# coded by Vasiliks 07.2023
 import os
 import requests
 from skin import parseColor
@@ -252,17 +253,16 @@ class AccuWeatherHours(Screen):
         hour_forecast = bs.find('div', class_='page-column-1')
         currents = hour_forecast.find_all('div', 'accordion-item hour')
         for current in currents:
-            hour = STR(current.find('h2', class_='date').text)
+            hour = STR(current.find('h2', class_='date').text.strip())
             iconsvg = LoadPixmap(cached=True, path="{}{}".format(FullPath, current.find('svg', class_='icon').get('data-src')))
             temp = STR(current.find('div', class_='temp').text)
             precip = STR(current.find('div', class_='precip').text)
             phrase = STR(current.find('div', class_='phrase').text)
             odd = current.find_all('div', class_="panel no-realfeel-phrase")
             extra = []
-            for i in odd[0].stripped_strings:
-                extra.append(i)
-            for i in odd[1].stripped_strings:
-                extra.append(i)
+            for n in range(len(odd)):
+                for i in odd[n].stripped_strings:
+                    extra.append(i)
             self.forecast.append((hour, iconsvg, temp, phrase, precip.strip(), extra, precip_svg))
 
         self["forecast"].setList(self.forecast)
